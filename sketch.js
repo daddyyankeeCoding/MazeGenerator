@@ -1,3 +1,8 @@
+// daddyyankeeCoding
+// Algoritmo Yandel para generar laberintos
+
+
+
 var colms, filas;
 var w = 20;
 var matrix = []
@@ -21,7 +26,13 @@ function setup() {
     createCanvas(600, 600);
     colms = floor(width / w);
     filas = floor(height / w);
-    //frameRate(5);
+
+    frameSlider = createSlider(5, 5000, 10);
+    frameSlider.position(630, 20);
+    label = createP("Ajustar velocidad");
+    label.position(630, 30);
+
+    frameRate(5);
 
     for (var j = 0; j < filas; j++) {
         for (var i = 0; i < colms; i++) {
@@ -35,6 +46,10 @@ function setup() {
 
 function draw() {
     background(51);
+
+    frameRate(frameSlider.value());
+    console.log(frameSlider.value());
+
     for (var i = 0; i < matrix.length; i++) {
         matrix[i].show();
     }
