@@ -1,8 +1,6 @@
 // daddyyankeeCoding
 // Algoritmo Yandel para generar laberintos
 
-
-
 var colms, filas;
 var w = 20;
 var matrix = []
@@ -27,6 +25,7 @@ function setup() {
     colms = floor(width / w);
     filas = floor(height / w);
 
+    //Slider para ajustar el frameRate
     frameSlider = createSlider(5, 5000, 10);
     frameSlider.position(630, 20);
     label = createP("Ajustar velocidad");
@@ -48,24 +47,29 @@ function draw() {
     background(51);
 
     frameRate(frameSlider.value());
-    console.log(frameSlider.value());
 
+    //Se pintan las celdas
     for (var i = 0; i < matrix.length; i++) {
         matrix[i].show();
     }
 
+    //Pasos para el algoritmo Yandel
     current.visitada = true;
     current.resaltar();
 
+    //Paso 1: Seleccionar aleatoriamente alguna celda vecina de la celda actual
     var siguiente = current.checkNeighbors();
 
     if (siguiente) {
         siguiente.visitada = true;
 
+        //Paso 2: Guardar en la pila la celda vecina seleccionada
         stack.push(current);
 
+        //Paso 3: Quitar la pared en medio de la celda actual y la seleccionada
         quitarPared(current, siguiente);
 
+        //Paso 4: Hacer la celda siguiente la celda actual
         current = siguiente;
 
     } //Backtracking

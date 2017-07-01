@@ -1,9 +1,14 @@
+// daddyyankeeCoding
+// Algoritmo Yandel para generar laberintos
+// Objeto para representar cada celda del laberinto
+
 function Celda(i, j) {
     this.i = i;
     this.j = j;
     this.paredes = [true, true, true, true];
     this.visitada = false;
 
+    //Retorna un array con las celdas adyacentes sin visitar
     this.checkNeighbors = function() {
         var neighbors = [];
 
@@ -34,6 +39,7 @@ function Celda(i, j) {
         }
 
     }
+
 
     this.resaltar = function() {
         var x = this.i * w;
