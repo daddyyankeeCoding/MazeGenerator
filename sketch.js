@@ -76,6 +76,7 @@ function draw() {
     else if (stack.length > 0) {
         current = stack.pop();
     }
+    console.log('Peluchin');
 }
 
 //Quita la pared en medio de 2 celdas
